@@ -1,9 +1,8 @@
-const express = require("express");
+import express from "express";
 const app = express();
 const port = 4000;
 
-// Endpoint 1: Greet
-// Ví dụ: /api/posts/greet?name=Ken
+
 app.get("/api/posts/greet", (req, res) => {
   const { name } = req.query;
   if (!name) {
@@ -12,8 +11,6 @@ app.get("/api/posts/greet", (req, res) => {
   res.json({ message: `Xin chào ${name}!` });
 });
 
-// Endpoint 2: Sum
-// Ví dụ: /api/posts/sum?a=5&b=7
 app.get("/api/posts/sum", (req, res) => {
   const { a, b } = req.query;
 
@@ -31,7 +28,15 @@ app.get("/api/posts/sum", (req, res) => {
   const sum = numA + numB;
   res.json({ a: numA, b: numB, sum });
 });
-
+app.get("/api/users", (req, res) => {
+  res.send( "danh sach user" );
+});
+app.get("/api/products", (req, res) => {
+  res.send( "danh sach products" );
+});
+app.get("/api/posts", (req, res) => {
+  res.send( "danh sach Posts" );
+});
 // Chạy server
 app.listen(port, () => {
   console.log(`✅ Server chạy tại http://localhost:${port}`);
